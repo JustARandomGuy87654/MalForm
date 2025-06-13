@@ -27,27 +27,23 @@ class MalformBuilder(ctk.CTk):
         super().__init__()
         self.title(f"{APP_NAME} v{VERSION}")
         self.geometry("620x550")
-
-        # Header
+        
         header = ctk.CTkLabel(self, text="🔧 Malform Builder", font=("Courier New", 24))
         header.pack(pady=(10, 0))
         subtitle = ctk.CTkLabel(self, text=PHILOSOPHICAL_PHRASE, font=("Courier New", 14), text_color="gray")
         subtitle.pack(pady=(0, 10))
 
-        # Tabview
         self.tabs = ctk.CTkTabview(self, width=600, height=380)
         self.tabs.add("File")
         self.tabs.add("Text")
         self.tabs.add("PDF")
         self.tabs.pack(pady=10)
 
-        # File Tab
         file_tab = self.tabs.tab("File")
         self.file_entry = ctk.CTkEntry(file_tab, placeholder_text="Select script file (.py/.ps1)...", width=400)
         self.file_entry.grid(row=0, column=0, padx=10, pady=10)
         ctk.CTkButton(file_tab, text="Browse", command=self._browse_file).grid(row=0, column=1)
 
-        # File options
         self.file_method = ctk.CTkOptionMenu(file_tab, values=["Fernet", "AES-CBC", "Powershell"])
         self.file_method.set("Fernet")
         self.file_method.grid(row=1, column=0, pady=5, padx=10, sticky="w")
@@ -68,7 +64,6 @@ class MalformBuilder(ctk.CTk):
             row=3, column=0, columnspan=2, pady=10
         )
 
-        # Text Tab
         text_tab = self.tabs.tab("Text")
         self.text_area = ctk.CTkTextbox(text_tab, width=560, height=200)
         self.text_area.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
@@ -79,7 +74,6 @@ class MalformBuilder(ctk.CTk):
             row=1, column=1, padx=10
         )
 
-        # PDF Tab
         pdf_tab = self.tabs.tab("PDF")
         self.pdf_entry = ctk.CTkEntry(pdf_tab, placeholder_text="Select .pdf file...", width=400)
         self.pdf_entry.grid(row=0, column=0, padx=10, pady=10)
@@ -89,7 +83,6 @@ class MalformBuilder(ctk.CTk):
         self.pdf_method.grid(row=1, column=0, pady=5, padx=10, sticky="w")
         ctk.CTkButton(pdf_tab, text="🔨 Build PDF", command=self._build_pdf).grid(row=1, column=1, padx=10)
 
-        # Status Bar
         self.status = ctk.CTkLabel(self, text="Ready...", text_color="green")
         self.status.pack(pady=10)
 
@@ -118,7 +111,6 @@ class MalformBuilder(ctk.CTk):
                 delay = int(self.delay_entry.get())
             except ValueError:
                 return self._error("Delay must be integer.")
-        # select stub creator
         if method == "Powershell":
             stub = self._create_ps_stub(data)
             out = asksaveasfilename(defaultextension=".ps1", filetypes=[("Powershell", "*.ps1")])
@@ -208,7 +200,6 @@ class MalformBuilder(ctk.CTk):
         return "\n".join(lines).encode()
 
     def _create_ps_stub(self, data: bytes) -> bytes:
-        # Basic PS obfuscation: base64 unicode encode
         text = data.decode('utf-8')
         b64 = base64.b64encode(text.encode('utf-16-le')).decode()
         ps_stub = []
