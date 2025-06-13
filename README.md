@@ -28,3 +28,11 @@
 4. Then it will build you encrypted malware, **the automatic exe build is bugged right now.**
 
 ---
+
+## Futures ideas
+1. More encryption methods
+3. More robust powershell encryption
+5. Correct the exe builder bug
+If you have any more idea, DM me on discord: justarandomguy62
+
+---
