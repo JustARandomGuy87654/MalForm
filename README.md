@@ -1,64 +1,30 @@
-<!--
-  Malform Builder – README
--->
-<p align="center">
-  <img src="https://img.shields.io/badge/version-1.2.2-blue" alt="Version">
-  <img src="https://img.shields.io/badge/python-3.8%2B-yellow" alt="Python">
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
-</p>
+# MalForm - Educational Malware Encrypter
 
-# 💀 Malform Builder
-
-> _"Hide truths, reveal nothing."_  
-
-> A dual-mode (GUI & CLI) stub builder that embeds scripts, text or PDFs into encrypted, obfuscated payloads.
+![Warning](https://img.shields.io/badge/Warning-Educational%20Use%20Only-red)
 
 ---
 
-## 🔍 Table of Contents
+## ⚠️ Disclaimer
 
-- [Features](#-features)  
-- [Demo](#-demo)  
-- [Installation](#-installation)  
-- [Usage](#-usage)  
-  - [GUI Mode](#gui-mode)  
-  - [CLI Mode](#cli-mode)  
-- [Examples](#-examples)  
-- [Configuration & Options](#-configuration--options)  
-- [Under the Hood](#-under-the-hood)  
-- [Roadmap](#-roadmap)  
-- [Contributing](#-contributing)  
-- [License](#-license)  
-- [Disclaimer](#-disclaimer)  
+**Malform** is a script made by a me for educacional uses, and i'm not responsable of what you are going to do with it.
 
 ---
 
-## ✨ Features
+## Features
 
-- **Encryption**  
-  - `Fernet` (AES-128)  
-  - `AES-CBC` (AES-256 + PKCS#7 padding)  
-  - PowerShell (Base64 + UTF-16 LE)  
-- **Obfuscation**  
-  - Reverse Base64 strings (`[::-1]`)  
-  - Optional VM-check via `wmic`  
-  - Execution delay (custom seconds)  
-- **Packaging**  
-  - Auto-compile to single EXE with PyInstaller  
-  - Verbose or silent builds  
-- **Input types**  
-  - Python & PowerShell scripts (`.py`, `.ps1`)  
-  - Raw text blocks  
-  - PDF documents  
-- **Dual interface**  
-  - Modern dark GUI (CustomTkinter)  
-  - Lightweight CLI
+- 🔐 Encrypted payloads using **Fernet** or **AES-CBC**
+- 🧪 Built-in **Anti‑VM** checks (blocks execution on virtual machines)
+- ⏱ Customizable **execution delay** before payload runs
+- 📦 Automatic `.exe` compilation using **PyInstaller**
+- 🖼️ Modern GUI built with **CustomTkinter**
 
 ---
 
-## 🎬 Demo
+## Setup & Usage
 
-<!-- GIF or screenshot link -->
-![Malform Builder GUI](docs/demo.gif)
+1. git clone https://github.com/JustARandomGuy87654/MalForm
+2. pip3 install cryptography pycryptodome customtkinter pyinstaller
+3. **python3 malform.py** | If you want to use the CLI mode then use: **python malform.py your_script_name -m encryption_you_want_to_use --anti-vm --delay secounds --verbose**
+4. Then it will build you encrypted malware, **the automatic exe build is bugged right now.**
 
 ---
